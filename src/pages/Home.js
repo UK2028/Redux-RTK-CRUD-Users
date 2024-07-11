@@ -31,7 +31,7 @@ export const Home = () => {
         </div>
       )}
       <div className="flex flex-col items-around gap-4">
-        {users.map((userData) => {
+        {users?.map((userData) => {
           return <UsersList userData={userData} key={userData.id} />;
         })}
       </div>

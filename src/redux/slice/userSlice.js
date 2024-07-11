@@ -36,9 +36,10 @@ export const addNewUser = createAsyncThunk(
           username,
         },
       });
+      console.log({data})
       return data;
     } catch (error) {
-      return rejectWithValue(error.resoonse.statusText);
+      return rejectWithValue(error.response.statusText);
     }
   }
 );
@@ -59,7 +60,7 @@ export const updateUser = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      return rejectWithValue(error.resoonse.statusText);
+      return rejectWithValue(error.response.statusText);
     }
   }
 );
@@ -70,7 +71,8 @@ export const deleteUser = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const id = payload.id;
-      await axios.delete(`${api}/${id}`);
+      const response = await axios.delete(`${api}/${id}`);
+      console.log({response})
       return id;
     } catch (error) {
       return rejectWithValue(error.response.statusText);
